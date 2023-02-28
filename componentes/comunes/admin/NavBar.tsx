@@ -1,7 +1,6 @@
 import { AppBar, Box, Button, IconButton, Link, Toolbar, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import NextLink from 'next/link';
-import Image from "next/image";
 
 export const NavBar = () => {
   return (

@@ -2,13 +2,13 @@ h1 {
   color: green
 }
 header {
-  height: 39px;
+  height: 38px;
   /* background-color: blue; */
 }
 
 main{
   height: 800px;
-  background-color: black;
+  background-color: green;
 }
 
 footer {

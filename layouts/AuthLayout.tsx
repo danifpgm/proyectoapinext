@@ -2,7 +2,6 @@ import { Box, Button, Link, Typography } from "@mui/material";
 import Head from "next/head";
 import { FC } from "react"
 import NextLink from 'next/link';
-import Image from "next/image";
 
 
 interface Props {
@@ -13,12 +12,11 @@ export const AuthLayout:FC<Props> = ({ children, title }) => {
   return (
     <>
         <Head>
-            <title> { title } </title>
+            <title> Autenticación </title>
         </Head>
         <header>
         <Box component="nav" 
                  sx= {{ padding:'10', backgroundColor:'red', alignItems:'center',  display: { xs: 'none', sm: 'flex' }}} >
-                <Image src="/DM.png" width={80} height={60}  alt="logo" />
                 <Box flex={2} />  
                     <Typography fontWeight={700}>Zona de Autenticación</Typography> 
                 <Box flex={2} />   
@@ -36,6 +34,9 @@ export const AuthLayout:FC<Props> = ({ children, title }) => {
                 { children }
             </Box>
         </main>
+        <footer>
+            <h2>Zona de Footer</h2>
+        </footer>
     </>
   )
 }
