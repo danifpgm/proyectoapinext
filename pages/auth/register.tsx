@@ -40,7 +40,7 @@ const RegisterPage = () => {
         return;
     }
 
-    router.replace('/');
+    router.replace('/usuarios');
    
   }
 

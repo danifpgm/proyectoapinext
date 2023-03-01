@@ -34,7 +34,7 @@ const LoginPage = () => {
         }
         //navegar a pantalla en la que estaba el usuario
         // router.push('/');
-        router.replace('/');
+        router.replace('/usuarios');
     } 
     return (
         <AuthLayout title={'Ingresar'}>
@@ -56,7 +56,6 @@ const LoginPage = () => {
                                 { ...register('correo', {
                                     required: 'correo es obligatorio',
                                     validate: (val) => validaciones.isEmail(val)
-                                    // validate: validations.isEmail
                                 })}
                                 error={!!errors.correo}
                                 helperText={errors.correo?.message}

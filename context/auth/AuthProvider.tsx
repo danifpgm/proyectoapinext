@@ -35,7 +35,6 @@ export const AuthProvider:FC = ({ children }) => {
             const { data } = await proyectoApi.post ('/usuarios/registrar', { correo, nombreCompleto, passwd })
             const { token, user } = data;
             Cookies.set('token', token);
-            //mando a llamar al login pq ya se autenticó
             dispatch({ type: '[Auth] - Login', payload: user });
             return {
                 hasError: false,
