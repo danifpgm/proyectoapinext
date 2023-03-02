@@ -3,12 +3,11 @@ h1 {
 }
 header {
   height: 38px;
-  /* background-color: blue; */
 }
 
 main{
   height: 800px;
-  background-color: white;
+  background-color: black;
 }
 
 footer {

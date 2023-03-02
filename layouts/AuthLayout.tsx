@@ -16,9 +16,9 @@ export const AuthLayout:FC<Props> = ({ children, title }) => {
         </Head>
         <header>
         <Box component="nav" 
-                 sx= {{ padding:'10', backgroundColor:'red', alignItems:'center',  display: { xs: 'none', sm: 'flex' }}} >
+                 sx= {{ padding:'10', backgroundColor:'green', alignItems:'center',  display: { xs: 'none', sm: 'flex' }}} >
                 <Box flex={2} />  
-                    <Typography fontWeight={700}>Zona de Autenticación</Typography> 
+                    <Typography fontWeight={1000} sx={{ color: 'white'}}>Zona de Autenticación</Typography> 
                 <Box flex={2} />   
                 <Link href='/auth/register' passHref component={ NextLink }>
                     <Button sx={{ color: 'white'}}>Registro</Button>
@@ -30,7 +30,7 @@ export const AuthLayout:FC<Props> = ({ children, title }) => {
             <Box sx={{marginLeft: 3}}>
                
             </Box>
-            <Box display='flex' justifyContent={'center'} alignItems='center' height="calc(100vh - 200px)">
+            <Box sx={{ backgroundColor:'white' }} display='flex' justifyContent={'center'} alignItems='center' height="calc(100vh - 200px)">
                 { children }
             </Box>
         </main>
