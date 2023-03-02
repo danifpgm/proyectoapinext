@@ -1,19 +1,23 @@
 import { AppBar, Box, Button, IconButton, Link, Toolbar, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import NextLink from 'next/link';
+import { AuthContext } from "@/context";
+import { useContext } from "react";
 
 export const NavBar = () => {
-  return (
+    const { user } =  useContext(AuthContext); 
+    return (
     <AppBar sx={{ backgroundColor:'green'}}>
         <Toolbar>
 
             <Link href='/' passHref component={ NextLink }>
                     <Button sx={{ color: 'black'}}>Home</Button>
+                    { user?.nombreCompleto }
             </Link>
             <Box flex={1} />
             
             <Box component="nav" 
-                 sx= {{ display: { xs: 'none', sm: 'flex' }}} >
+                    sx= {{ display: { xs: 'none', sm: 'flex' }}} >
                     
                 <Link href='/usuarios' passHref component={ NextLink }>
                     <Button sx={{ color: 'black'}}>Usuarios</Button>
@@ -43,6 +47,6 @@ export const NavBar = () => {
             </IconButton>
         </Toolbar>
     </AppBar>
-  )
+    )
 
-  }
+    }

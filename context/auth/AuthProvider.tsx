@@ -14,7 +14,7 @@ const AUTH_INITIAL_STATE: AuthState = {
     user: undefined
 }
 
-export const AuthProvider:FC = ({ children }) => {
+export const AuthProvider:FC<{children: any}> = ({ children }) => {
     const [ state, dispatch ] = useReducer( authReducer, AUTH_INITIAL_STATE );
     const loginUser = async (correo: string, passwd: string):Promise<boolean> => {
         try {
@@ -23,6 +23,7 @@ export const AuthProvider:FC = ({ children }) => {
             const { token, user } = data;
             console.log(user);
             Cookies.set('token', token);
+            //Cookies.set('nombreCompleto', user.nombreCompleto);
             dispatch({ type: '[Auth] - Login', payload: user });
             return true;
         } catch (error) { //credenciales falsas
