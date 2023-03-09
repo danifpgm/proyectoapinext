@@ -11,16 +11,16 @@ import { AuthContext } from '../../context/auth/AuthContext';
 
 interface IRespuestaRegister {
     token: string;
-    email: string;
-    password: string;
-    fullName: string;
-    isActive: boolean;
+    correo: string;
+    passwd: string;
+    nombreCompleto: string;
+    esActivo: boolean;
     roles: String[]
 }
 type UserData = {
-    email: string,
-    password: string,
-    fullName: string
+    correo: string,
+    passwd: string,
+    nombreCompleto: string
 };
 const RegisterPage = () => {
   const router = useRouter();
@@ -31,8 +31,8 @@ const RegisterPage = () => {
   
   const onRegisterUser = async ( InputData: UserData ) => {
     setShowError(false);
-    const { email, password, fullName } = InputData;
-    const {hasError, message } = await registerUser(email, password, fullName)
+    const { correo, passwd, nombreCompleto } = InputData;
+    const {hasError, message } = await registerUser(correo, passwd, nombreCompleto)
     if (hasError){
         setShowError(true);
         setErrorMessage(message || '');
@@ -61,31 +61,31 @@ const RegisterPage = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField 
-                        { ...register('fullName', {
+                        { ...register('nombreCompleto', {
                             required: 'Nombre y Apellidos obligatorio'
                         })}
-                        error= { !!errors.fullName}
-                        helperText = { errors.fullName?.message }
+                        error= { !!errors.nombreCompleto}
+                        helperText = { errors.nombreCompleto?.message }
                         label="Nombre y Apellidos" variant='filled' fullWidth />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField 
-                        { ...register('email', {
-                            required: 'Email obligatorio',
+                        { ...register('correo', {
+                            required: 'Correo obligatorio',
                             validate: validaciones.isEmail
                         })}
-                        error= { !!errors.email}
-                        helperText = { errors.email?.message }
+                        error= { !!errors.correo}
+                        helperText = { errors.correo?.message }
                         label="Correo" variant='filled' fullWidth />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField 
-                        { ...register('password', {
+                        { ...register('passwd', {
                             required: 'Password requerido',
                             minLength: { value:6, message: 'Minimo 6 caracteres'}
                         })}
-                        error= { !!errors.password}
-                        helperText = { errors.password?.message }
+                        error= { !!errors.passwd}
+                        helperText = { errors.passwd?.message }
                         label="Contraseña" type="password" variant='filled' fullWidth />
                 </Grid>
                 <Grid item xs={12}>

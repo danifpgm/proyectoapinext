@@ -4,7 +4,7 @@ import { IRespuestaApiAuth } from './interfaces/IRespuestaAuthApi';
 
 interface ContextProps {
     isLoggedIn: boolean;
-    user?: IUsuario;
+    usuario?: IUsuario;
     
     loginUser: (correo: string, passwd: string) => Promise<boolean>;
     registerUser: (correo: string, passwd: string, nombreCompleto: string ) => Promise<IRespuestaApiAuth>

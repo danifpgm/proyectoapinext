@@ -5,14 +5,15 @@ import { AuthContext } from "@/context";
 import { useContext } from "react";
 
 export const NavBar = () => {
-    const { user } =  useContext(AuthContext); 
+    const { usuario } =  useContext(AuthContext); 
+    console.log('usuario: ', usuario);
     return (
     <AppBar sx={{ backgroundColor:'green'}}>
         <Toolbar>
 
             <Link href='/' passHref component={ NextLink }>
                     <Button sx={{ color: 'black'}}>Home</Button>
-                    { user?.nombreCompleto }
+                    { usuario?.nombreCompleto }
             </Link>
             <Box flex={1} />
             
