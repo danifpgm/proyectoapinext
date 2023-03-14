@@ -2,7 +2,6 @@ import { NextPage } from "next"
 import { PublicLayouts } from "../../layouts";
 import { UsuariosLista } from "@/componentes/usuarios";
 import { useUsuarios } from "@/hooks/useUsuarios";
-import { Mundo } from "@/componentes/comunes";
 
 const indexPage: NextPage = () => {
 

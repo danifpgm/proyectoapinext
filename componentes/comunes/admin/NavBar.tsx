@@ -5,8 +5,7 @@ import { AuthContext } from "@/context";
 import { useContext } from "react";
 
 export const NavBar = () => {
-    const { usuario } =  useContext(AuthContext); 
-    console.log('usuario: ', usuario);
+    const { usuario } =  useContext(AuthContext);
     return (
     <AppBar sx={{ backgroundColor:'green'}}>
         <Toolbar>

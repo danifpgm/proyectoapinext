@@ -17,7 +17,7 @@ const AUTH_INITIAL_STATE: AuthState = {
 }
 
 interface Props{
-    chidren: any
+    children: any
 }
 
 export const AuthProvider:FC<{children: any}> = ({ children }) => {
@@ -41,8 +41,9 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             console.log('usuario: ', usuario);
             console.log('token: ', token);
             Cookies.set('token', token);
-            //Cookies.set('nombreCompleto', user.nombreCompleto);
+            Cookies.set('nombreCompleto', usuario.nombreCompleto);
             dispatch({ type: '[Auth] - Login', payload: usuario });
+            console.log('estado', state);
             return true;
         } catch (error) { //credenciales falsas
             return false;
@@ -58,6 +59,7 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             console.log('token: ', token);
             Cookies.set('token', token);
             dispatch({ type: '[Auth] - Login', payload: usuario });
+            console.log('estado', state);
             return {
                 hasError: false,
                 message: 'Usuario creado con éxito'

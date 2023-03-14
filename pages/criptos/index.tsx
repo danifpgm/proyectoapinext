@@ -2,7 +2,6 @@ import { NextPage } from "next"
 import { PublicLayouts } from "../../layouts";
 import { CriptosLista } from "@/componentes/criptos";
 import { useCriptos } from "@/hooks/useCriptos";
-import { Mundo } from "@/componentes/comunes";
 
 const indexPage: NextPage = () => {
 

@@ -1,10 +1,11 @@
 import { createContext } from 'react';
-import { IUsuario } from '../../interfaces/usuario/IUsuario';
 import { IRespuestaApiAuth } from './interfaces/IRespuestaAuthApi';
+import { IUsuario, ICripto } from '@/interfaces';
 
 interface ContextProps {
     isLoggedIn: boolean;
     usuario?: IUsuario;
+    cripto?: ICripto;
     
     loginUser: (correo: string, passwd: string) => Promise<boolean>;
     registerUser: (correo: string, passwd: string, nombreCompleto: string ) => Promise<IRespuestaApiAuth>
