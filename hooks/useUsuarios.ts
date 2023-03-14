@@ -1,4 +1,4 @@
-import { IUsuario } from '@/interfaces/usuario';
+import { IUsuario } from '@/interfaces';
 import useSWR, { SWRConfiguration } from 'swr';
 
 

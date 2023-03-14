@@ -1,12 +1,12 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
-import { IUsuario } from '@/interfaces';
+import { ICripto } from '@/interfaces';
 
 
 interface Props {
-    usuarios: IUsuario[]
+    criptos: ICripto[]
 }
-export const UsuariosLista:FC<Props> = ({ usuarios }) => {
+export const CriptosLista:FC<Props> = ({ criptos }) => {
   return (
     <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -14,23 +14,21 @@ export const UsuariosLista:FC<Props> = ({ usuarios }) => {
             <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell>Nombre</TableCell>
-                <TableCell>Correo</TableCell>
-                <TableCell>Roles</TableCell>
+                <TableCell>Precio</TableCell>
             </TableRow>
         </TableHead>
 
         <TableBody>
                 { 
-                    usuarios.map((usuario: IUsuario) => (
-                        <TableRow key= { usuario.id } 
+                    criptos.map((cripto: ICripto) => (
+                        <TableRow key= { cripto.id } 
                                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                { usuario.id }
+                                { cripto.id }
                             </TableCell>
-                            <TableCell align="right">{usuario.nombreCompleto}</TableCell>
-                            <TableCell align="right">{usuario.correo}</TableCell>
-                            <TableCell align="right">{usuario.roles}</TableCell>
+                            <TableCell align="right">{cripto.nombre}</TableCell>
+                            <TableCell align="right">{cripto.precio}</TableCell>
                         </TableRow>
                     )
                 )}

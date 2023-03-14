@@ -1,12 +1,12 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
-import { IUsuario } from '@/interfaces';
+import { INft } from '@/interfaces';
 
 
 interface Props {
-    usuarios: IUsuario[]
+    nfts: INft[]
 }
-export const UsuariosLista:FC<Props> = ({ usuarios }) => {
+export const NftsLista:FC<Props> = ({ nfts }) => {
   return (
     <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -14,23 +14,25 @@ export const UsuariosLista:FC<Props> = ({ usuarios }) => {
             <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell>Nombre</TableCell>
-                <TableCell>Correo</TableCell>
-                <TableCell>Roles</TableCell>
+                <TableCell>Creador</TableCell>
+                <TableCell>Dueño</TableCell>
+                <TableCell>Fecha de creación</TableCell>
             </TableRow>
         </TableHead>
 
         <TableBody>
                 { 
-                    usuarios.map((usuario: IUsuario) => (
-                        <TableRow key= { usuario.id } 
+                    nfts.map((nft: INft) => (
+                        <TableRow key= { nft.id } 
                                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                { usuario.id }
+                                { nft.id }
                             </TableCell>
-                            <TableCell align="right">{usuario.nombreCompleto}</TableCell>
-                            <TableCell align="right">{usuario.correo}</TableCell>
-                            <TableCell align="right">{usuario.roles}</TableCell>
+                            <TableCell align="right">{nft.nombre}</TableCell>
+                            <TableCell align="right">{nft.creadoPorUsuario}</TableCell>
+                            <TableCell align="right">{nft.poseeUsuario}</TableCell>
+                            <TableCell align="right">{nft.fechaCreacion}</TableCell>
                         </TableRow>
                     )
                 )}
