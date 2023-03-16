@@ -8,7 +8,7 @@ interface ContextProps {
     cripto?: ICripto;
     
     loginUser: (correo: string, passwd: string) => Promise<boolean>;
-    registerUser: (correo: string, passwd: string, nombreCompleto: string ) => Promise<IRespuestaApiAuth>
+    registerUser: (correo: string, passwd: string, nombreCompleto: string, rol: string ) => Promise<IRespuestaApiAuth>
 }
 
 export const AuthContext  = createContext( {} as ContextProps );

@@ -4,7 +4,7 @@ export interface IUsuario {
     correo: string;
     nombreCompleto: string;
     esActivo: boolean;
-    roles: string[];
+    rol: string;
     creaNft?: string;
     poseeNft?: string[];
     criptos: string[];

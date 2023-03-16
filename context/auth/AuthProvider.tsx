@@ -50,9 +50,9 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
         }
     } 
 
-    const registerUser = async (correo: string, passwd: string, nombreCompleto: string ):Promise<IRespuestaApiAuth>=> {
+    const registerUser = async (correo: string, passwd: string, nombreCompleto: string, rol: string ):Promise<IRespuestaApiAuth>=> {
         try {
-            const { data } = await proyectoApi.post ('/usuarios/registrar', { correo, nombreCompleto, passwd })
+            const { data } = await proyectoApi.post ('/usuarios/registrar', { correo, nombreCompleto, passwd, rol})
             console.log('data: ', data);
             const { token, usuario } = data;
             console.log('usuario: ', usuario);

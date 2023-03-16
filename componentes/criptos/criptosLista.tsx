@@ -1,6 +1,8 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
+import NextLink from 'next/link';
 import { ICripto } from '@/interfaces';
+import Link from 'next/link';
 
 
 interface Props {
@@ -21,15 +23,17 @@ export const CriptosLista:FC<Props> = ({ criptos }) => {
         <TableBody>
                 { 
                     criptos.map((cripto: ICripto) => (
-                        <TableRow key= { cripto.id } 
-                                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                { cripto.id }
-                            </TableCell>
-                            <TableCell align="right">{cripto.nombre}</TableCell>
-                            <TableCell align="right">{cripto.precio}</TableCell>
-                        </TableRow>
+                        <Link key = { cripto.id } href={`/criptos/${cripto.id}`} component={NextLink}>
+                            <TableRow key= { cripto.id } 
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    { cripto.id }
+                                </TableCell>
+                                <TableCell align="right">{cripto.nombre}</TableCell>
+                                <TableCell align="right">{cripto.precio}</TableCell>
+                            </TableRow>
+                        </Link>
                     )
                 )}
                 

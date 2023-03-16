@@ -15,7 +15,7 @@ export const UsuariosLista:FC<Props> = ({ usuarios }) => {
                 <TableCell>ID</TableCell>
                 <TableCell>Nombre</TableCell>
                 <TableCell>Correo</TableCell>
-                <TableCell>Roles</TableCell>
+                <TableCell>Rol</TableCell>
             </TableRow>
         </TableHead>
 
@@ -30,7 +30,7 @@ export const UsuariosLista:FC<Props> = ({ usuarios }) => {
                             </TableCell>
                             <TableCell align="right">{usuario.nombreCompleto}</TableCell>
                             <TableCell align="right">{usuario.correo}</TableCell>
-                            <TableCell align="right">{usuario.roles}</TableCell>
+                            <TableCell align="right">{usuario.rol}</TableCell>
                         </TableRow>
                     )
                 )}

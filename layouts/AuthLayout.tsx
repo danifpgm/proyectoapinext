@@ -19,7 +19,13 @@ export const AuthLayout:FC<Props> = ({ children, title }) => {
                  sx= {{ padding:'10', backgroundColor:'green', alignItems:'center',  display: { xs: 'none', sm: 'flex' }}} >
                 <Box flex={2} />  
                     <Typography fontWeight={1000} sx={{ color: 'white'}}>Zona de Autenticación</Typography> 
-                <Box flex={2} />   
+                <Box flex={2} />
+                <Link href='/' passHref component={ NextLink }>
+                    <Button sx={{ color: 'white'}}>HOME</Button>
+                </Link>
+                <Link href='/auth/login' passHref component={ NextLink }>
+                    <Button sx={{ color: 'white'}}>Login</Button>
+                </Link>
                 <Link href='/auth/register' passHref component={ NextLink }>
                     <Button sx={{ color: 'white'}}>Registro</Button>
                 </Link>
