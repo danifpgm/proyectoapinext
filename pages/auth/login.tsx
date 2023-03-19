@@ -1,4 +1,4 @@
-import { useState, useContext, useReducer } from 'react';
+import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,7 @@ import { Box, Grid, Typography, TextField, Button, Link, Chip } from '@mui/mater
 import { AuthContext} from '../../context';
 import { AuthLayout } from '../../layouts';
 import { validaciones } from '../../utils';
+import Cookies from 'js-cookie';
 
 interface IRespuestaLogin {
     token: string;
@@ -26,6 +27,7 @@ const LoginPage = () => {
     const onLoginUser = async ({correo, passwd}: FormData ) => {
         setShowError(false);
         const isValidLogin = await loginUser(correo, passwd);
+        const rol = Cookies.get('rol');
 
         if (!isValidLogin){
             setShowError(true);
@@ -34,7 +36,14 @@ const LoginPage = () => {
         }
         //navegar a pantalla en la que estaba el usuario
         // router.push('/');
-        router.replace('/usuarios');
+
+        if ( rol == 'usuario' ) {
+            router.replace('/usuarios');
+        }
+        
+        if ( rol == 'administrador') {
+            router.replace('/admin');
+        }
     } 
     return (
         <AuthLayout title={'Ingresar'}>

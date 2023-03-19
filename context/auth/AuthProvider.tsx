@@ -42,6 +42,7 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             console.log('token: ', token);
             Cookies.set('token', token);
             Cookies.set('nombreCompleto', usuario.nombreCompleto);
+            Cookies.set('rol', usuario.rol);
             dispatch({ type: '[Auth] - Login', payload: usuario });
             console.log('estado', state);
             return true;
@@ -77,6 +78,7 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             }
         }
     }
+
     return (
         <AuthContext.Provider value={{
             ...state,

@@ -17,8 +17,7 @@ export const NavBar = () => {
             <Box flex={1} />
             
             <Box component="nav" 
-                    sx= {{ display: { xs: 'none', sm: 'flex' }}} >
-                    
+                    sx= {{ display: { xs: 'none', sm: 'flex' }}} >    
                 <Link href='/usuarios' passHref component={ NextLink }>
                     <Button sx={{ color: 'black'}}>Usuarios</Button>
                 </Link>

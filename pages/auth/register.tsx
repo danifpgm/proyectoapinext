@@ -6,7 +6,6 @@ import Select from "@mui/material/Select";
 import { useForm } from 'react-hook-form';
 import { AuthLayout } from '../../layouts';
 import { validaciones } from '../../utils';
-import proyectoApi from '../../api/proyectoApi';
 import { useRouter } from 'next/router';
 import { AuthContext } from '../../context/auth/AuthContext';
 import React from 'react';
@@ -41,7 +40,7 @@ const RegisterPage = () => {
     const onRegisterUser = async ( InputData: UserData ) => {
     setShowError(false);
     const { correo, passwd, nombreCompleto, rol} = InputData;
-    const {hasError, message } = await registerUser(correo, passwd, nombreCompleto, rol)
+    const { hasError, message } = await registerUser(correo, passwd, nombreCompleto, rol)
     if (hasError){
         setShowError(true);
         setErrorMessage(message || '');
