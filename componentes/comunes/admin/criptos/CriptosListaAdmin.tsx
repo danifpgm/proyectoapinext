@@ -12,7 +12,7 @@ interface Props {
 }
 export const CriptosListaAdmin:FC<Props> = ({criptos}) => {
   function onClick() {
-    var id = '2b382ffd-b36b-4536-98a7-a9dba44f6e80';
+    var id = 'id'
     var misCabeceros = new Headers();
     misCabeceros.append("Content-Type", "application/json");
 
