@@ -7,7 +7,10 @@ import ClearIcon from '@mui/icons-material/Clear';
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import router, { useRouter } from 'next/router';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14ce431a87b8d116ca66825ec9423d0b6a03171d
 interface Props {
   criptos: ICripto[]
 }
@@ -29,6 +32,7 @@ export const CriptosListaAdmin:FC<Props> = ({criptos}) => {
     };
 
     fetch(`http://localhost:3000/api/cripto/${id}`, requestOpciones)
+<<<<<<< HEAD
     //     .then ( respuesta => {
     //         if (!respuesta.ok) {
     //             const datos = Promise.reject(respuesta);
@@ -39,6 +43,8 @@ export const CriptosListaAdmin:FC<Props> = ({criptos}) => {
     //             router.replace('/admin/editarCriptos')
     //         }
     // })
+=======
+>>>>>>> 14ce431a87b8d116ca66825ec9423d0b6a03171d
     router.reload()
   }
 
