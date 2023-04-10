@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { AuthLayout } from '../../../layouts';
-import proyectoApi from '../../../api/proyectoApi';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import { AdminLayout } from '@/layouts';
+import styles from './anadirProducto.module.css';
 
 type CriptoData = {
     nombre: string,
@@ -46,25 +44,24 @@ const crearCriptoPage = () => {
     }
 
     return (
-        <AuthLayout title={'Crear criptomoneda'}>
-            <form onSubmit={ submitForm } noValidate>
-                <input
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                    type="text"
-                    placeholder="Nombre"
-                    className="input"
-                />
-                <input
-                    value={precio}
-                    onChange={(e) => setPrecio(e.target.value)}
-                    type="number"
-                    placeholder="Precio"
-                    className="input"
-                />
-                <button type="submit" className="btn">Crear</button>
-            </form>
-        </AuthLayout>
+        <AdminLayout>
+            <div className={styles['container']}>
+                <div className={styles['form-container']}>
+                    <h2 className={styles['form-header']}>Añadir Cripto</h2>
+                    <form onSubmit={submitForm}>
+                        <div className={styles['form-group']}>
+                            <label htmlFor="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                        </div>
+                        <div className={styles['form-group']}>
+                            <label htmlFor="precio">Precio</label>
+                            <input type="number" id="confirmar-contraseña" name="confirmar-contraseña" value={precio} onChange={(e) => setPrecio(e.target.value)} required />
+                        </div>
+                        <button type="submit" className={styles['form-submit']}>Crear</button>
+                    </form>
+                </div>
+            </div>
+        </AdminLayout>
     )
 }
 

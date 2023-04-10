@@ -6,13 +6,15 @@ import NextLink from 'next/link';
 import ClearIcon from '@mui/icons-material/Clear';
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import router from 'next/router';
+import router, { useRouter } from 'next/router';
+
 interface Props {
   criptos: ICripto[]
 }
 export const CriptosListaAdmin:FC<Props> = ({criptos}) => {
-  function onClick() {
-    var id = '2b382ffd-b36b-4536-98a7-a9dba44f6e80';
+  const router = useRouter()
+  function onClick(row: ICripto) {
+    var id = row.id
     var misCabeceros = new Headers();
     misCabeceros.append("Content-Type", "application/json");
 
@@ -27,16 +29,17 @@ export const CriptosListaAdmin:FC<Props> = ({criptos}) => {
     };
 
     fetch(`http://localhost:3000/api/cripto/${id}`, requestOpciones)
-        .then ( respuesta => {
-            if (!respuesta.ok) {
-                const datos = Promise.reject(respuesta);
-                console.log (datos);
-            } else {
-                const datos = respuesta.json();
-                console.log (datos);
-                router.replace('/admin/editarCriptos')
-            }
-    })
+    //     .then ( respuesta => {
+    //         if (!respuesta.ok) {
+    //             const datos = Promise.reject(respuesta);
+    //             console.log (datos);
+    //         } else {
+    //             const datos = respuesta.json();
+    //             console.log (datos);
+    //             router.replace('/admin/editarCriptos')
+    //         }
+    // })
+    router.reload()
   }
 
   const colums: GridColDef[] = [
@@ -47,19 +50,21 @@ export const CriptosListaAdmin:FC<Props> = ({criptos}) => {
           headerName: 'Acciones',
           description: 'Muestra información si la orden está pagada o no',
           width: 200,
-          renderCell: () => (
+          renderCell: ({row}) => (
               <>
                 <Link href='/admin/editarCriptos' component={ NextLink }>
                   <ModeEditOutlineTwoToneIcon sx={{ color: 'red'}} />
                 </Link>
-                  <ClearIcon  sx={{ color: 'blue'}} onClick={onClick} />
+                <Link href='/admin/editarCriptos' component={ NextLink }>
+                  <ClearIcon  sx={{ color: 'blue'}} onClick={() => onClick(row)}/>
+                </Link>
               </>
             ) 
         }
   ];
   const rows = criptos;
   return (
-            <Grid container sx={{ width: '70%', display: 'flex',justifyContent: 'flex-end'}}>
+            <Grid container sx={{ width: '100%', display: 'flex',justifyContent: 'flex-end'}}>
               <Link href='/admin/anadirCripto' component={ NextLink }>
                 <Box >
                   <AddBoxIcon sx={{  color: 'green', fontSize:40 }} />

@@ -8,6 +8,7 @@ export const PublicLayouts:FC<Props> = ({ children }) => {
   return (
     <>
         <header>
+            <title> Página de Criptos </title>
             <NavBar />
         </header>
         <main style={{

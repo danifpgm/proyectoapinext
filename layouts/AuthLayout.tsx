@@ -33,12 +33,11 @@ export const AuthLayout:FC<Props> = ({ children, title }) => {
         </Box>
         </header>
         <main>
-            <Box sx={{marginLeft: 3}}>
-               
-            </Box>
-            <Box sx={{ backgroundColor:'white' }} display='flex' justifyContent={'center'} alignItems='center' height="calc(100vh - 200px)">
+        <Box height='calc(100vh - 200px)' display='flex'>
+            <Box sx={{ backgroundColor:'white' }} margin='auto' height="calc(100vh - 200px)">
                 { children }
             </Box>
+        </Box>
         </main>
         <footer>
             <h2>Zona de Footer</h2>

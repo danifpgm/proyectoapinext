@@ -122,7 +122,7 @@ const RegisterPage = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <Button 
-                        type="submit" color='secondary' className='circular-btn' size='large' fullWidth>
+                        type="submit" color='success' className='circular-btn' size='large' fullWidth>
                         Ingresar
                     </Button>
                 </Grid>

@@ -48,10 +48,10 @@ const LoginPage = () => {
     return (
         <AuthLayout title={'Ingresar'}>
             <form onSubmit={ handleSubmit(onLoginUser) } noValidate>
-                <Box sx={{ width: 350, padding: '10px 20px'}}>
+                <Box sx={{ width: 350, padding: 'auto auto'}}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Typography variant='h3' component='h3'>Iniciar Sesión</Typography>
+                            <Typography variant='h3' component='h1'>Iniciar Sesión</Typography>
                             <Chip 
                                 label="No se reconoce usuario/contraseña"
                                 color="error"
@@ -87,7 +87,7 @@ const LoginPage = () => {
                         <Grid item xs={12}>
                             <Button 
                                 type='submit'
-                                color='secondary' className='circular-btn' size='large' fullWidth>
+                                color='success' className='circular-btn' size='large' fullWidth>
                                 Ingresar
                             </Button>                           
                         </Grid>
