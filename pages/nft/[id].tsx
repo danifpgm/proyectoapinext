@@ -11,16 +11,13 @@ interface Props {
 
 const NftPage = () => {
     const router = useRouter();
-    console.log(router);
-   
     const nft_ = router.query;
     const { nfts:nft, isLoading } = useNfts(`/nft/${nft_.id}`);
-    console.log(nft)
+
   return (
     <PublicLayouts> 
        <h2>Detalle del NFT {`${router.query.id}`} </h2>
         <NftsDetalles nft={nft} />
-        
     </PublicLayouts>
     
   )

@@ -7,7 +7,6 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import { AuthContext } from '../../context';
 interface Props {
     nft: INft
 }
@@ -16,14 +15,13 @@ interface Props {
 //   // return `https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/`
 //   return `${src}?s=${width}`
 // }
+
 export const NftsDetalles:FC<Props> = ({nft}) => {
-    console.log(nft);
     const [value, setValue] = React.useState('1');
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
       setValue(newValue);
     };
-    const { usuario } =  useContext(AuthContext);
 
     
   return (
@@ -32,7 +30,7 @@ export const NftsDetalles:FC<Props> = ({nft}) => {
         <Box display='flex' flexDirection='row'  >
           <Image
             src='/nft.png'
-            alt={nft.nombre}
+            alt='NFT'
             width={300}
             height={300}
             // loader={myLoader}
@@ -74,7 +72,7 @@ export const NftsDetalles:FC<Props> = ({nft}) => {
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList onChange={handleChange} aria-label="lab API tabs example">
                 <Tab label="Descripcion" value="1" />
-                <Tab label="Ora opción" value="2" />
+                <Tab label="Otra opción" value="2" />
                 <Tab label="Otra opción" value="3" />
               </TabList>
             </Box>

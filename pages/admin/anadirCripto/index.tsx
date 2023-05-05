@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { AdminLayout } from '@/layouts';
-import styles from './anadirProducto.module.css';
+import styles from './anadirCripto.module.css';
 
 type CriptoData = {
     nombre: string,
@@ -37,8 +37,9 @@ const crearCriptoPage = () => {
                 if (!respuesta.ok) {
                     console.log(Promise.reject(respuesta));
                 } else {
-                    console.log(respuesta.json());
-                    router.replace('/admin/editarCriptos')
+                    // console.log(respuesta.json());
+                    console.log(respuesta);
+                    router.replace('/admin')
                 }
         })
     }
@@ -55,7 +56,7 @@ const crearCriptoPage = () => {
                         </div>
                         <div className={styles['form-group']}>
                             <label htmlFor="precio">Precio</label>
-                            <input type="number" id="confirmar-contraseña" name="confirmar-contraseña" value={precio} onChange={(e) => setPrecio(e.target.value)} required />
+                            <input type="number" id="precio" name="precio" value={precio} onChange={(e) => setPrecio(e.target.value)} required />
                         </div>
                         <button type="submit" className={styles['form-submit']}>Crear</button>
                     </form>

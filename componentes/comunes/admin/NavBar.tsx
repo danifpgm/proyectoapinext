@@ -6,14 +6,20 @@ import { useContext } from "react";
 
 export const NavBar = () => {
     const { usuario } =  useContext(AuthContext);
+
+
+
     return (
     <AppBar sx={{ backgroundColor:'green'}}>
         <Toolbar>
 
             <Link href='/' passHref component={ NextLink }>
-                    <Button sx={{ color: 'black'}}>Home</Button>
-                    { usuario?.nombreCompleto }
+                <Button sx={{ color: 'black'}}>Home</Button>
             </Link>
+            { usuario?.id && (
+            <Link href={'/usuarios/' + usuario?.id } passHref component={ NextLink }>
+            <Button sx={{ color: 'dark'}}>{ usuario?.nombreCompleto }</Button>
+            </Link>)}
             <Box flex={1} />
             
             <Box component="nav" 

@@ -4,7 +4,6 @@ import { useNfts } from '../../hooks/useNfts';
 
 const IndexPage = () => {
   const { nfts, isLoading } = useNfts('/nft');
-  console.log("l=", isLoading, "c=", nfts);
 
   return (
     <PublicLayouts>

@@ -8,7 +8,7 @@ interface Props {
     idCripto: string
 }
 
-const UsuarioPagina = () => {
+const CriptoPagina = () => {
     const router = useRouter();
     console.log(router)
     const idCripto = router.query;
@@ -16,11 +16,9 @@ const UsuarioPagina = () => {
     console.log(cripto)
   return (
     <PublicLayouts>
-        <h1>Detalle de cripto {`${router.query.id}`}</h1>
         <CriptosDetalles cripto = { cripto } />
     </PublicLayouts>
-    
   )
 }
 
-export default UsuarioPagina
+export default CriptoPagina

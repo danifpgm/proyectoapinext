@@ -76,7 +76,7 @@ const RegisterPage = () => {
                 <Grid item xs={12}>
                     <TextField 
                         { ...register('nombreCompleto', {
-                            required: 'Nombre y Apellidos obligatorio'
+                            required: 'Nombre y apellidos obligatorio'
                         })}
                         error= { !!errors.nombreCompleto}
                         helperText = { errors.nombreCompleto?.message }
@@ -85,7 +85,7 @@ const RegisterPage = () => {
                 <Grid item xs={12}>
                     <TextField 
                         { ...register('correo', {
-                            required: 'Correo obligatorio',
+                            required: 'Correo es obligatorio',
                             validate: validaciones.isEmail
                         })}
                         error= { !!errors.correo}
@@ -95,7 +95,7 @@ const RegisterPage = () => {
                 <Grid item xs={12}>
                     <TextField 
                         { ...register('passwd', {
-                            required: 'Password requerido',
+                            required: 'Contraseña es obligatoria',
                             minLength: { value:6, message: 'Minimo 6 caracteres'}
                         })}
                         error= { !!errors.passwd}
@@ -116,8 +116,8 @@ const RegisterPage = () => {
                     label="Rol"
                     onChange={handleChange}
                 >
-                    <MenuItem value={'usuario'}>usuario</MenuItem>
-                    <MenuItem value={'administrador'}>administrador</MenuItem>
+                    <MenuItem value={'usuario'}>Usuario</MenuItem>
+                    <MenuItem value={'administrador'}>Administrador</MenuItem>
                 </Select>
                 </Grid>
                 <Grid item xs={12}>

@@ -63,7 +63,7 @@ const LoginPage = () => {
                         <Grid item xs={12}>
                             <TextField 
                                 { ...register('correo', {
-                                    required: 'correo es obligatorio',
+                                    required: 'Correo es obligatorio',
                                     validate: (val) => validaciones.isEmail(val)
                                 })}
                                 error={!!errors.correo}
@@ -73,7 +73,7 @@ const LoginPage = () => {
                         <Grid item xs={12}>
                             <TextField 
                                 { ...register('passwd', {
-                                    required:'Contraseña es requerido',
+                                    required:'Contraseña es obligatoria',
                                     minLength: { value: 6, message: 'Minimo 6 caracteres'}
                                 })}
                                 error={!!errors.passwd}

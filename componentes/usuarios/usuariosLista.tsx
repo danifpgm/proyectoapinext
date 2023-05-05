@@ -6,6 +6,7 @@ import { IUsuario } from '@/interfaces';
 interface Props {
     usuarios: IUsuario[]
 }
+
 export const UsuariosLista:FC<Props> = ({ usuarios }) => {
   return (
     <TableContainer component={Paper}>
@@ -28,9 +29,9 @@ export const UsuariosLista:FC<Props> = ({ usuarios }) => {
                             <TableCell component="th" scope="row">
                                 { usuario.id }
                             </TableCell>
-                            <TableCell align="right">{usuario.nombreCompleto}</TableCell>
-                            <TableCell align="right">{usuario.correo}</TableCell>
-                            <TableCell align="right">{usuario.rol}</TableCell>
+                            <TableCell align="left">{usuario.nombreCompleto}</TableCell>
+                            <TableCell align="left">{usuario.correo}</TableCell>
+                            <TableCell align="left">{usuario.rol}</TableCell>
                         </TableRow>
                     )
                 )}

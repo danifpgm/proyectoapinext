@@ -5,8 +5,8 @@ import { useNfts } from "@/hooks/useNfts";
 import { Mundo } from "@/componentes/comunes";
 
 const indexPage_: NextPage = () => {
-
     const { nfts, isLoading } = useNfts('/nft');
+
     return (
 
     <PublicLayouts>

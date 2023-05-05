@@ -1,19 +1,19 @@
 import { Box, Grid, Link } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { FC } from 'react';
-import { ICripto } from '@/interfaces/cripto/ICripto';
+import { IUsuario } from '@/interfaces/usuario/IUsuario';
 import NextLink from 'next/link';
 import ClearIcon from '@mui/icons-material/Clear';
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import router, { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 interface Props {
-  criptos: ICripto[]
+  usuarios: IUsuario[]
 }
-export const CriptosListaAdmin:FC<Props> = ({ criptos }) => {
+export const UsuariosListaAdmin:FC<Props> = ({ usuarios }) => {
   const router = useRouter()
-  function onClick(row: ICripto) {
-    var id = row.id
+  function onClickBorrar(row: IUsuario) {
     var misCabeceros = new Headers();
     misCabeceros.append("Content-Type", "application/json");
 
@@ -27,34 +27,43 @@ export const CriptosListaAdmin:FC<Props> = ({ criptos }) => {
         redirect: 'follow'
     };
 
-    fetch(`http://localhost:3000/api/cripto/${id}`, requestOpciones)
+    fetch(`http://localhost:3000/api/usuarios/${row.id}`, requestOpciones)
     router.reload()
+  }
+
+  function onClickEditar(row: IUsuario) {
+    Cookies.set('usuarioEditarId', row.id);
+    Cookies.set('usuarioEditarCorreo', row.correo);
+    Cookies.set('usuarioEditarNombre', row.nombreCompleto);
+    Cookies.set('usuarioEditarRol', row.rol)
   }
 
   const colums: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 350},
-        { field: 'nombre', headerName:'Nombre', width: 170 },
-        { field: 'precio', headerName: 'Precio', width: 170 },
+        { field: 'nombreCompleto', headerName:'Nombre', width: 150 },
+        { field: 'correo', headerName: 'Correo', width: 250 },
+        { field: 'rol', headerName: 'Rol', width: 150 },
         { field: 'opciones',
           headerName: 'Acciones',
           description: 'Muestra información si la orden está pagada o no',
           width: 200,
           renderCell: ({row}) => (
               <>
-                <Link href='/admin' component={ NextLink }>
-                  <ModeEditOutlineTwoToneIcon sx={{ color: 'blue'}} />
+                <Link href='/admin/editarUsuario' component={ NextLink }>
+                  
+                  <ModeEditOutlineTwoToneIcon sx={{ color: 'blue'}} onClick={() => onClickEditar(row)}/>
                 </Link>
                 <Link href='/admin' component={ NextLink }>
-                  <ClearIcon  sx={{ color: 'red'}} onClick={() => onClick(row)}/>
+                  <ClearIcon  sx={{ color: 'red'}} onClick={() => onClickBorrar(row)}/>
                 </Link>
               </>
             ) 
         }
   ];
-  const rows = criptos;
+  const rows = usuarios;
   return (
             <Grid container sx={{ width: '100%', display: 'flex',justifyContent: 'flex-end'}}>
-              <Link href='/admin/anadirCripto' component={ NextLink }>
+              <Link href='/auth/register' component={ NextLink }>
                 <Box >
                   <AddBoxIcon sx={{  color: 'green', fontSize:40 }} />
                 </Box>
