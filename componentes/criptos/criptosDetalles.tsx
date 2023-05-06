@@ -5,27 +5,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { ICripto } from '@/interfaces';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
+import router from 'next/router';
 
 
 interface Props {
     cripto: ICripto
-}
-
-function ConfirmDialog({ open, handleClose, handleConfirm, title, message }) {
-  return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>{title}</DialogTitle>
-      <DialogContent>{message}</DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>
-          Cancelar
-        </Button>
-        <Button onClick={handleConfirm} autoFocus>
-          Confirmar
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
 }
 
 export const CriptosDetalles:FC<Props> = ({ cripto }) => {
@@ -33,6 +18,37 @@ export const CriptosDetalles:FC<Props> = ({ cripto }) => {
   const [value, setValue] = useState('1');
   const [open, setOpen] = useState(false);
   const [cantidad, setCantidad] = useState(1);
+
+  function comprarCripto() {
+    const idUsuario = Cookies.get('id');
+  
+    var misCabeceros = new Headers();
+    misCabeceros.append("Content-Type", "application/json");
+  
+    var cuerpo = JSON.stringify({
+      "usuario": idUsuario,
+      "criptomoneda": cripto.id,
+      "cantidad": cantidad
+    });
+  
+    var requestOpciones = {
+      method: 'POST',
+      headers: misCabeceros,
+      body: cuerpo,
+      redirect: 'follow'
+    };
+  
+    fetch("http://localhost:3000/api/usuario-posee-cripto", requestOpciones)
+      .then ( respuesta => {
+        if (!respuesta.ok) {
+            console.log(Promise.reject(respuesta));
+        } else {
+            // console.log(respuesta.json());
+            console.log(respuesta);
+            // router.replace('/admin')
+        }
+    })
+  }
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -50,7 +66,12 @@ export const CriptosDetalles:FC<Props> = ({ cripto }) => {
     if (cantidad > 0) {
       compraQuery();
       setOpen(false);
-      toast.success(`Has comprado ${cantidad} unidad de ${cripto.nombre} a ${cripto.precio}€`);
+      if ( cantidad == 1) {
+        toast.success(`Has comprado ${cantidad} unidad de ${cripto.nombre} a ${cripto.precio}€`);
+        comprarCripto();
+      } else {
+        toast.success(`Has comprado ${cantidad} unidades de ${cripto.nombre} a ${cripto.precio}€`);
+      }
     } else {
       toast.error('Por favor, introduce una cantidad válida');
     }

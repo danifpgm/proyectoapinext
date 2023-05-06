@@ -40,6 +40,7 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             const { token, usuario } = data;
             console.log('usuario: ', usuario);
             console.log('token: ', token);
+            Cookies.set('id', usuario.id);
             Cookies.set('token', token);
             Cookies.set('nombreCompleto', usuario.nombreCompleto);
             Cookies.set('rol', usuario.rol);

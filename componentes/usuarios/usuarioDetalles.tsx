@@ -39,11 +39,10 @@ export const UsuarioDetalles:FC<Props> = ({ usuario }) => {
                 <ul>
                     {usuario?.criptos?.map((dato, index) => (
                         <li key={index}>
-                            Nombre: {dato.nombre}, Precio: {dato.precio}
+                            Nombre: {dato.id} Cantidad: {dato.cantidad}
                         </li>
                     ))}
                 </ul>
         </>
     )
-
 }

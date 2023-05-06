@@ -41,7 +41,7 @@ export const NavBar = () => {
                 <Button sx={{ color: 'black'}}>Login</Button>
             </Link>
             <Box flex={1} />
-            <IconButton
+            {/* <IconButton
                 size="large"
                 edge="start"
                 aria-label="menu"
@@ -49,7 +49,7 @@ export const NavBar = () => {
                 sx={{  }}
             >
                 <MenuIcon />
-            </IconButton>
+            </IconButton> */}
         </Toolbar>
     </AppBar>
     )
